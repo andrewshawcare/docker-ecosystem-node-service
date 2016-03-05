@@ -1,0 +1,19 @@
+version: "2"
+volumes:
+  database-data:
+services:
+  docker-ecosystem-node-service:
+    image: ${REGISTRY}/docker-ecosystem-node-service:${IMAGE_VERSION}
+    ports:
+      - '5678:5678'
+    build: .
+    links:
+      - database
+  migration:
+    image: andrewshawcare/docker-ecosystem-migration
+    links:
+      - database
+  database:
+    image: postgres:9.5.1
+    volumes:
+      - database-data:/var/lib/postgres/data
