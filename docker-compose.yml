@@ -3,12 +3,14 @@ volumes:
   database-data:
 services:
   docker-ecosystem-node-service:
-    image: ${REGISTRY}/docker-ecosystem-node-service:${IMAGE_VERSION}
+    image: ${IMAGE_REGISTRY}/docker-ecosystem-node-service:${IMAGE_VERSION}
     ports:
       - '5678:5678'
     build: .
     links:
       - database
+    depends_on:
+      - migration
   migration:
     image: andrewshawcare/docker-ecosystem-migration
     links:
