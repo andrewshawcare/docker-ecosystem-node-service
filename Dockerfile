@@ -10,4 +10,4 @@ RUN npm install
 
 COPY . .
 
-ENTRYPOINT ["./docker-entrypoint.sh"]
+ENTRYPOINT ["./wait-for-it.sh", "database:5432", "--", "./docker-entrypoint.sh"]
