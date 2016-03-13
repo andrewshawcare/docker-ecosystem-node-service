@@ -1,6 +1,6 @@
 const http = require("http");
 const pg = require("pg");
-const hostname = "127.0.0.1";
+const hostname = "0.0.0.0";
 const port = 5678;
 
 http.createServer((request, response) => {
