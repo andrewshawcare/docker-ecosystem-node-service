@@ -3,7 +3,7 @@ volumes:
   database-data:
 services:
   docker-ecosystem-node-service:
-    image: ${IMAGE_REGISTRY}/docker-ecosystem-node-service:${IMAGE_VERSION}
+    image: ${REGISTRYHOST}/docker-ecosystem-node-service:${TAG}
     ports:
       - '5678'
     build: .
@@ -12,7 +12,7 @@ services:
     depends_on:
       - migration
   migration:
-    image: ${IMAGE_REGISTRY}/docker-ecosystem-migration
+    image: ${REGISTRYHOST}/docker-ecosystem-migration
     links:
       - database
   database:
